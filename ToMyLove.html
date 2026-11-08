@@ -1,84 +1,428 @@
 <!doctype html>
 <html lang="zh-Hant">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff5f6">
-<title>妹妹不在身邊，但愛沒有休假 ♡</title>
-<style>
-:root{--ink:#754657;--muted:#a36b7c;--pink:#f6c7d2;--paper:#fffaf8}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 5%,#fff 0 9%,transparent 30%),linear-gradient(145deg,#fff7f4,#fff0f4 52%,#f8f2ff);font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink)}
-main{width:min(900px,100%);margin:auto;padding:28px 18px 38px}
-header{text-align:center;margin:8px auto 24px}
-.kicker{display:inline-block;padding:6px 14px;border:1px solid #f0cbd4;border-radius:999px;background:#fff9fa;color:#b66b80;font-size:12px;letter-spacing:.12em}
-h1{font-size:clamp(25px,5vw,38px);line-height:1.35;margin:13px 0 7px;color:#b65d78;font-weight:850;letter-spacing:.03em}
-.subtitle{margin:0;color:#9e7782;font-size:14px}
-.intro{margin:17px auto 0;max-width:520px;font-size:14px;line-height:1.8;color:#8f6d78}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card{height:250px;perspective:1000px;cursor:pointer;outline:none}
-.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.75,.25,1)}
-.card.is-flipped .card-inner{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1.5px solid #e8cbd3;border-radius:23px;padding:16px 15px 13px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;box-shadow:0 8px 20px #9e6c7b12;overflow:hidden}
-.face:before{content:"";position:absolute;inset:6px;border:1px dashed #d9aab8;border-radius:17px;pointer-events:none}
-.front{background:var(--card-bg)}
-.back{background:var(--card-bg);transform:rotateY(180deg)}
-.topline{position:relative;z-index:1;width:100%;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#a36b7c;letter-spacing:.08em}
-.mark{font-size:17px}
-.message{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;flex:1;width:100%;padding:12px 4px;font-weight:800;line-height:1.55;letter-spacing:.025em;color:#754657;font-size:clamp(18px,2vw,22px);overflow-wrap:anywhere}
-.back .message{font-size:clamp(15px,1.65vw,19px);line-height:1.55;padding-left:5px;padding-right:5px}
-.card:nth-child(3) .back .message{font-size:clamp(13px,1.35vw,16px)}
-.icon{position:relative;z-index:1;font-size:34px;line-height:1.2}
-.hint{position:relative;z-index:1;font-size:11px;color:#a36b7c;letter-spacing:.08em}
-.actions{display:flex;justify-content:center;gap:10px;margin:22px auto 0;flex-wrap:wrap}
-button{border:1px solid #e8c4cf;background:#fffafc;color:#9c5d72;border-radius:999px;padding:10px 18px;font:600 13px inherit;cursor:pointer;box-shadow:0 4px 12px #a86f8010}
-button:hover{background:#fff0f4}
-footer{text-align:center;margin-top:20px;color:#a17b85;font-size:12px;line-height:1.7}
-@media(max-width:680px){main{padding:22px 13px 30px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{height:220px}.face{padding:13px 11px 11px;border-radius:19px}.face:before{inset:5px;border-radius:14px}.message{font-size:18px}.back .message{font-size:15px}.card:nth-child(3) .back .message{font-size:13px}}
-@media(max-width:360px){.card{height:205px}.message{font-size:16px}.back .message{font-size:14px}.card:nth-child(3) .back .message{font-size:12px}}
-@media(prefers-reduced-motion:reduce){.card-inner{transition:none}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff5f6">
+  <title>妹妹不在身邊，但愛沒有休假 ♡</title>
+  <style>
+    :root {
+      --ink: #754657;
+      --muted: #a36b7c;
+      --pink: #f6c7d2;
+      --paper: #fffaf8
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 10% 5%, #fff 0 9%, transparent 30%), linear-gradient(145deg, #fff7f4, #fff0f4 52%, #f8f2ff);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      color: var(--ink)
+    }
+
+    main {
+      width: min(900px, 100%);
+      margin: auto;
+      padding: 28px 18px 38px
+    }
+
+    header {
+      text-align: center;
+      margin: 8px auto 24px
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid #f0cbd4;
+      border-radius: 999px;
+      background: #fff9fa;
+      color: #b66b80;
+      font-size: 12px;
+      letter-spacing: .12em
+    }
+
+    h1 {
+      font-size: clamp(25px, 5vw, 38px);
+      line-height: 1.35;
+      margin: 13px 0 7px;
+      color: #b65d78;
+      font-weight: 850;
+      letter-spacing: .03em
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #9e7782;
+      font-size: 14px
+    }
+
+    .intro {
+      margin: 17px auto 0;
+      max-width: 520px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #8f6d78
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px
+    }
+
+    .card {
+      height: 250px;
+      perspective: 1000px;
+      cursor: pointer;
+      outline: none
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .65s cubic-bezier(.2, .75, .25, 1)
+    }
+
+    .card.is-flipped .card-inner {
+      transform: rotateY(180deg)
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border: 1.5px solid #e8cbd3;
+      border-radius: 23px;
+      padding: 16px 15px 13px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      box-shadow: 0 8px 20px #9e6c7b12;
+      overflow: hidden
+    }
+
+    .face:before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed #d9aab8;
+      border-radius: 17px;
+      pointer-events: none
+    }
+
+    .front {
+      background: var(--card-bg)
+    }
+
+    .back {
+      background: var(--card-bg);
+      transform: rotateY(180deg)
+    }
+
+    .topline {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #a36b7c;
+      letter-spacing: .08em
+    }
+
+    .mark {
+      font-size: 17px
+    }
+
+    .message {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      width: 100%;
+      padding: 12px 4px;
+      font-weight: 800;
+      line-height: 1.55;
+      letter-spacing: .025em;
+      color: #754657;
+      font-size: clamp(18px, 2vw, 22px);
+      overflow-wrap: anywhere
+    }
+
+    .back .message {
+      font-size: clamp(15px, 1.65vw, 19px);
+      line-height: 1.55;
+      padding-left: 5px;
+      padding-right: 5px
+    }
+
+    .card:nth-child(3) .back .message {
+      font-size: clamp(13px, 1.35vw, 16px)
+    }
+
+    .icon {
+      position: relative;
+      z-index: 1;
+      font-size: 34px;
+      line-height: 1.2
+    }
+
+    .hint {
+      position: relative;
+      z-index: 1;
+      font-size: 11px;
+      color: #a36b7c;
+      letter-spacing: .08em
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 22px auto 0;
+      flex-wrap: wrap
+    }
+
+    button {
+      border: 1px solid #e8c4cf;
+      background: #fffafc;
+      color: #9c5d72;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font: 600 13px inherit;
+      cursor: pointer;
+      box-shadow: 0 4px 12px #a86f8010
+    }
+
+    button:hover {
+      background: #fff0f4
+    }
+
+    .end {
+      text-align: center;
+      margin-top: 20px;
+      color: #a17b85;
+      font-size: 12px;
+      line-height: 1.7
+    }
+
+    @media(max-width:680px) {
+      main {
+        padding: 22px 13px 30px
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px
+      }
+
+      .card {
+        height: 220px
+      }
+
+      .face {
+        padding: 13px 11px 11px;
+        border-radius: 19px
+      }
+
+      .face:before {
+        inset: 5px;
+        border-radius: 14px
+      }
+
+      .message {
+        font-size: 18px
+      }
+
+      .back .message {
+        font-size: 15px
+      }
+
+      .card:nth-child(3) .back .message {
+        font-size: 13px
+      }
+    }
+
+    @media(max-width:360px) {
+      .card {
+        height: 205px
+      }
+
+      .message {
+        font-size: 16px
+      }
+
+      .back .message {
+        font-size: 14px
+      }
+
+      .card:nth-child(3) .back .message {
+        font-size: 12px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .card-inner {
+        transition: none
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-<main>
-<header>
-  <span class="kicker">姊姊專屬・想念翻牌卡</span>
-  <h1>妹妹不在身邊，<br>但愛沒有休假 ♡</h1>
-  <p class="subtitle">六張小卡，裝著六份想念</p>
-  <p class="intro">想我的時候，就點開一張。<br>不管隔著多遠，妹妹都一直惦記著妳。</p>
-</header>
-<section class="grid" aria-label="六張想念翻牌卡">
-  <article class="card" tabindex="0" role="button" aria-label="當妳突然想我的時候，點擊翻牌" style="--card-bg:#fce8ee">
-    <div class="card-inner"><div class="face front"><div class="topline"><span>翻開前</span><span class="mark">♡</span></div><div class="message">當妳突然想我的時候</div><div class="icon">💌</div><div class="hint">♡ 點我翻牌 ♡</div></div><div class="face back"><div class="topline"><span>翻開後</span><span class="mark">♡</span></div><div class="message">我一直很想妳❤️</div><div class="icon">💕</div><div class="hint">♡ 點我翻回 ♡</div></div></div>
-  </article>
-  <article class="card" tabindex="0" role="button" aria-label="當妳今天過得不太順利，點擊翻牌" style="--card-bg:#fff0df">
-    <div class="card-inner"><div class="face front"><div class="topline"><span>翻開前</span><span class="mark">♡</span></div><div class="message">當妳今天過得不太順利</div><div class="icon">🌷</div><div class="hint">♡ 點我翻牌 ♡</div></div><div class="face back"><div class="topline"><span>翻開後</span><span class="mark">♡</span></div><div class="message">今天不順利沒關係，等我回去陪妳</div><div class="icon">💕</div><div class="hint">♡ 點我翻回 ♡</div></div></div>
-  </article>
-  <article class="card" tabindex="0" role="button" aria-label="當妳覺得沒有人懂妳，點擊翻牌" style="--card-bg:#f0eafe">
-    <div class="card-inner"><div class="face front"><div class="topline"><span>翻開前</span><span class="mark">♡</span></div><div class="message">當妳覺得沒有人懂妳</div><div class="icon">🐰</div><div class="hint">♡ 點我翻牌 ♡</div></div><div class="face back"><div class="topline"><span>翻開後</span><span class="mark">♡</span></div><div class="message">雖然我也常常不懂妳，但不管妳要做什麼我都支持妳</div><div class="icon">💕</div><div class="hint">♡ 點我翻回 ♡</div></div></div>
-  </article>
-  <article class="card" tabindex="0" role="button" aria-label="當妳今天特別開心，點擊翻牌" style="--card-bg:#e9f5ef">
-    <div class="card-inner"><div class="face front"><div class="topline"><span>翻開前</span><span class="mark">♡</span></div><div class="message">當妳今天特別開心</div><div class="icon">☀️</div><div class="hint">♡ 點我翻牌 ♡</div></div><div class="face back"><div class="topline"><span>翻開後</span><span class="mark">♡</span></div><div class="message">只要妳開心，什麼都值得</div><div class="icon">💕</div><div class="hint">♡ 點我翻回 ♡</div></div></div>
-  </article>
-  <article class="card" tabindex="0" role="button" aria-label="當妳想知道妹妹有多喜歡妳，點擊翻牌" style="--card-bg:#fff2dc">
-    <div class="card-inner"><div class="face front"><div class="topline"><span>翻開前</span><span class="mark">♡</span></div><div class="message">當妳想知道妹妹有多喜歡妳</div><div class="icon">❤️</div><div class="hint">♡ 點我翻牌 ♡</div></div><div class="face back"><div class="topline"><span>翻開後</span><span class="mark">♡</span></div><div class="message">妳一定知道我有多愛妳</div><div class="icon">💕</div><div class="hint">♡ 點我翻回 ♡</div></div></div>
-  </article>
-  <article class="card" tabindex="0" role="button" aria-label="當妳想跟我說話的時候，點擊翻牌" style="--card-bg:#e8f3fc">
-    <div class="card-inner"><div class="face front"><div class="topline"><span>翻開前</span><span class="mark">♡</span></div><div class="message">當妳想跟我說話的時候</div><div class="icon">💬</div><div class="hint">♡ 點我翻牌 ♡</div></div><div class="face back"><div class="topline"><span>翻開後</span><span class="mark">♡</span></div><div class="message">那就打來吧，隨時等妳❤️</div><div class="icon">💕</div><div class="hint">♡ 點我翻回 ♡</div></div></div>
-  </article>
-</section>
-<div class="actions">
-  <button id="reset">全部翻回正面</button>
-  <button id="reveal">全部揭曉</button>
-</div>
-<footer>不管妳什麼時候想我，我都在。♡<br>—— 妳的妹妹</footer>
-</main>
-<script>
-const cards=[...document.querySelectorAll('.card')];
-function flip(card){card.classList.toggle('is-flipped');card.setAttribute('aria-pressed',card.classList.contains('is-flipped')?'true':'false')}
-cards.forEach(card=>{card.addEventListener('click',()=>flip(card));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip(card)}})});
-document.getElementById('reset').addEventListener('click',()=>cards.forEach(c=>{c.classList.remove('is-flipped');c.setAttribute('aria-pressed','false')}));
-document.getElementById('reveal').addEventListener('click',()=>cards.forEach(c=>{c.classList.add('is-flipped');c.setAttribute('aria-pressed','true')}));
-</script>
+  <main>
+    <header>
+      <span class="kicker">姊姊專屬・想念翻牌卡</span>
+      <h1>妹妹不在身邊，<br>但愛沒有休假 ♡</h1>
+      <p class="subtitle">六張小卡，裝著六份想念</p>
+      <p class="intro">想我的時候，就點開一張。<br>不管隔著多遠，妹妹都一直惦記著妳。</p>
+    </header>
+    <section class="grid" aria-label="六張想念翻牌卡">
+      <article class="card" tabindex="0" role="button" aria-label="當妳突然想我的時候，點擊翻牌" style="--card-bg:#fce8ee">
+        <div class="card-inner">
+          <div class="face front">
+            <div class="topline"><span>💜</span><span class="mark">♡</span></div>
+            <div class="message">當妳突然想我的時候</div>
+            <div class="icon">💌</div>
+            <div class="hint">♡ 點我翻牌 ♡</div>
+          </div>
+          <div class="face back">
+            <div class="topline"><span></span><span class="mark">♡</span></div>
+            <div class="message">我一直很想妳❤️</div>
+            <div class="icon">💕</div>
+            <div class="hint">♡ 點我翻回 ♡</div>
+          </div>
+        </div>
+      </article>
+      <article class="card" tabindex="0" role="button" aria-label="當妳今天過得不太順利，點擊翻牌" style="--card-bg:#fff0df">
+        <div class="card-inner">
+          <div class="face front">
+            <div class="topline"><span>💜</span><span class="mark">♡</span></div>
+            <div class="message">當妳今天過得不太順利</div>
+            <div class="icon">🌷</div>
+            <div class="hint">♡ 點我翻牌 ♡</div>
+          </div>
+          <div class="face back">
+            <div class="topline"><span></span><span class="mark">♡</span></div>
+            <div class="message">今天不順利沒關係，等我回去陪妳</div>
+            <div class="icon">💕</div>
+            <div class="hint">♡ 點我翻回 ♡</div>
+          </div>
+        </div>
+      </article>
+      <article class="card" tabindex="0" role="button" aria-label="當妳覺得沒有人懂妳，點擊翻牌" style="--card-bg:#f0eafe">
+        <div class="card-inner">
+          <div class="face front">
+            <div class="topline"><span>💜</span><span class="mark">♡</span></div>
+            <div class="message">當妳覺得沒有人懂妳</div>
+            <div class="icon">🐰</div>
+            <div class="hint">♡ 點我翻牌 ♡</div>
+          </div>
+          <div class="face back">
+            <div class="topline"><span></span><span class="mark">♡</span></div>
+            <div class="message">雖然我也常常不懂妳，但不管妳要做什麼我都支持妳</div>
+            <div class="icon">💕</div>
+            <div class="hint">♡ 點我翻回 ♡</div>
+          </div>
+        </div>
+      </article>
+      <article class="card" tabindex="0" role="button" aria-label="當妳今天特別開心，點擊翻牌" style="--card-bg:#e9f5ef">
+        <div class="card-inner">
+          <div class="face front">
+            <div class="topline"><span>💜</span><span class="mark">♡</span></div>
+            <div class="message">當妳今天特別開心</div>
+            <div class="icon">☀️</div>
+            <div class="hint">♡ 點我翻牌 ♡</div>
+          </div>
+          <div class="face back">
+            <div class="topline"><span></span><span class="mark">♡</span></div>
+            <div class="message">只要妳開心，什麼都值得</div>
+            <div class="icon">💕</div>
+            <div class="hint">♡ 點我翻回 ♡</div>
+          </div>
+        </div>
+      </article>
+      <article class="card" tabindex="0" role="button" aria-label="當妳想知道妹妹有多喜歡妳，點擊翻牌" style="--card-bg:#fff2dc">
+        <div class="card-inner">
+          <div class="face front">
+            <div class="topline"><span>💜</span><span class="mark">♡</span></div>
+            <div class="message">當妳想知道妹妹有多喜歡妳</div>
+            <div class="icon">❤️</div>
+            <div class="hint">♡ 點我翻牌 ♡</div>
+          </div>
+          <div class="face back">
+            <div class="topline"><span></span><span class="mark">♡</span></div>
+            <div class="message">妳一定知道我有多愛妳</div>
+            <div class="icon">💕</div>
+            <div class="hint">♡ 點我翻回 ♡</div>
+          </div>
+        </div>
+      </article>
+      <article class="card" tabindex="0" role="button" aria-label="當妳想跟我說話的時候，點擊翻牌" style="--card-bg:#e8f3fc">
+        <div class="card-inner">
+          <div class="face front">
+            <div class="topline"><span>💜</span><span class="mark">♡</span></div>
+            <div class="message">當妳想跟我說話的時候</div>
+            <div class="icon">💬</div>
+            <div class="hint">♡ 點我翻牌 ♡</div>
+          </div>
+          <div class="face back">
+            <div class="topline"><span></span><span class="mark">♡</span></div>
+            <div class="message">那就打來吧，隨時等妳❤️</div>
+            <div class="icon">💕</div>
+            <div class="hint">♡ 點我翻回 ♡</div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <div class="actions">
+      <button id="reset">全部翻回正面</button>
+      <button id="reveal">全部揭曉</button>
+    </div>
+    <span class="intro">不管妳什麼時候想我，我都在。♡<br>—— 妳妹</span>
+  </main>
+  <script>
+    const cards = [...document.querySelectorAll('.card')];
+
+    function flip(card) {
+      card.classList.toggle('is-flipped');
+      card.setAttribute('aria-pressed', card.classList.contains('is-flipped') ? 'true' : 'false')
+    }
+    cards.forEach(card => {
+      card.addEventListener('click', () => flip(card));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          flip(card)
+        }
+      })
+    });
+    document.getElementById('reset').addEventListener('click', () => cards.forEach(c => {
+      c.classList.remove('is-flipped');
+      c.setAttribute('aria-pressed', 'false')
+    }));
+    document.getElementById('reveal').addEventListener('click', () => cards.forEach(c => {
+      c.classList.add('is-flipped');
+      c.setAttribute('aria-pressed', 'true')
+    }));
+
+  </script>
 </body>
+
 </html>
